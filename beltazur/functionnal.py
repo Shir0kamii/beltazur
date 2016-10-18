@@ -10,3 +10,12 @@ def map_function(function):
     def _inner(iterable):
         return map(function, iterable)
     return _inner
+
+
+def compose(functions):
+    """Compose the given fonction together, in the given order"""
+    def _inner(*args):
+        for f in functions:
+            args = f(*args)
+        return args
+    return _inner
